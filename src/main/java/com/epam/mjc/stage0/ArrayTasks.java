@@ -134,7 +134,7 @@ public class ArrayTasks {
         int[] tmpArr;
 
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 1; j < arr[i].length - 1; j++) {
+            for (int j = i; j < arr[i].length - 1; j++) {
                 if (arr[i][j] > arr[i][j]) {
                     tmp = arr[i][j];
                     arr[i][j] = arr[i][j + 1];
@@ -143,11 +143,11 @@ public class ArrayTasks {
             }
         }
         for (int i = 0; i < arr.length; i++) {
-            for (int j = i; j < arr.length; j++) {
-                if (arr[i].length > arr[j].length) {
-                    tmpArr = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = tmpArr;
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j].length > arr[j + 1].length) {
+                    tmpArr = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmpArr;
                 }
             }
         }
