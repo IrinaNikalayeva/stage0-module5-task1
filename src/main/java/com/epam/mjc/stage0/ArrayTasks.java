@@ -1,5 +1,6 @@
 package com.epam.mjc.stage0;
 
+
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -131,22 +132,31 @@ public class ArrayTasks {
     public int[][] sortRaggedArray(int[][] arr) {
         int tmp;
         int[] tmpArr;
+
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length - 1; j++) {
-                if (arr[i][j] > arr[i][j + 1]) {
+            for (int j = 1; j < arr[i].length - 1; j++) {
+                if (arr[i][j] > arr[i][j]) {
                     tmp = arr[i][j];
                     arr[i][j] = arr[i][j + 1];
                     arr[i][j + 1] = tmp;
                 }
             }
         }
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i].length > arr[i + 1].length) {
-                tmpArr = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = tmpArr;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i; j < arr.length; j++) {
+                if (arr[i].length > arr[j].length) {
+                    tmpArr = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmpArr;
+                }
             }
         }
         return arr;
+    }
+
+    public static void main(String[] args) {
+        int[][] arr = {{-901, -371, 358}, {109, 287}, {-115, 448, 556}, {-885}, {-864, -643, 122, 763}};
+        ArrayTasks arrayTasks = new ArrayTasks();
+        arrayTasks.sortRaggedArray(arr);
     }
 }
