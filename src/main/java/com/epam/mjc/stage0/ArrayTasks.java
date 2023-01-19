@@ -1,7 +1,5 @@
 package com.epam.mjc.stage0;
 
-import java.util.Arrays;
-
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -67,6 +65,7 @@ public class ArrayTasks {
                 indx = i;
             }
         }
+        System.out.println(indx);
         return indx;
     }
 
@@ -102,22 +101,22 @@ public class ArrayTasks {
      * arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        int arrLen = 0;
+        int newArrLen = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > 0) {
-                arrLen++;
+                newArrLen++;
             }
-            System.out.println(arrLen);
+            System.out.println(newArrLen);
         }
-        int[] array1 = new int[arrLen];
+        int[] array1 = new int[newArrLen];
+        int j = 0;
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < array1.length; j++) {
-                if (arr[i] > 0) {
-                    array1[i] = arr[i];
-                }
+            if (arr[i] > 0) {
+                array1[j] = arr[i];
+                j++;
             }
+
         }
-        System.out.println(Arrays.toString(array1));
         return array1;
     }
 
@@ -133,21 +132,23 @@ public class ArrayTasks {
      */
     public int[][] sortRaggedArray(int[][] arr) {
         int tmp;
+        int[] tmpArr;
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                if (arr[i][j] < arr[i][j + 1]) {
-                    tmp = arr[i][j + 1];
+            for (int j = 0; j < arr[i].length - 1; j++) {
+                if (arr[i][j] > arr[i][j + 1]) {
+                    tmp = arr[i][j];
                     arr[i][j] = arr[i][j + 1];
                     arr[i][j + 1] = tmp;
                 }
             }
         }
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i].length > arr[i + 1].length) {
+                tmpArr = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = tmpArr;
+            }
+        }
         return arr;
-    }
-
-    public static void main(String[] args) {
-        int[] arrTest = {1,-2, 3};
-        ArrayTasks arrayTasks = new ArrayTasks();
-        arrayTasks.getOnlyPositiveNumbers(arrTest);
     }
 }
