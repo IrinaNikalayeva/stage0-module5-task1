@@ -59,14 +59,13 @@ public class ArrayTasks {
      * arr = [5, -3, -4],   number = 10    ->  -1
      */
     public int findIndexOfNumber(int[] arr, int number) {
-        int indx = -1;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == number) {
-                indx = i;
+                //indx = i;
+                return i;
             }
         }
-        System.out.println(indx);
-        return indx;
+        return -1;
     }
 
     /**
